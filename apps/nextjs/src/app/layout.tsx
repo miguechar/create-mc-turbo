@@ -1,13 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { cn } from "@mc/ui";
-import { ThemeProvider, ThemeToggle } from "@mc/ui/theme";
-import { Toaster } from "@mc/ui/toast";
+import { Toaster } from "@mc/ui/components/sonner";
+import { cn } from "@mc/ui/lib/utils";
+import { ThemeProvider, ThemeToggle } from "@mc/ui/components/theme-provider";
 
 import { env } from "~/env";
 
 import "~/app/styles.css";
+
+import Providers from "~/components/providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -57,11 +59,13 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         )}
       >
         <ThemeProvider>
-          {props.children}
-          <div className="absolute right-4 bottom-4">
-            <ThemeToggle />
-          </div>
-          <Toaster />
+          <Providers>
+            {props.children}
+            <div className="absolute right-4 bottom-4">
+              <ThemeToggle />
+            </div>
+            <Toaster />
+          </Providers>
         </ThemeProvider>
       </body>
     </html>
