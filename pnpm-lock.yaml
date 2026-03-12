@@ -25,7 +25,7 @@ catalogs:
       specifier: ^5.90.8
       version: 5.90.21
     '@types/node':
-      specifier: ^22.18.12
+      specifier: 22.19.15
       version: 22.19.15
     better-auth:
       specifier: 1.4.0-beta.9
@@ -189,7 +189,7 @@ importers:
     devDependencies:
       '@better-auth/cli':
         specifier: 'catalog:'
-        version: 1.4.0-beta.9(@neondatabase/serverless@0.9.5)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(kysely@0.28.11)(react-dom@19.1.4(react@19.1.4))(react@19.1.4)
+        version: 1.4.0-beta.9(@neondatabase/serverless@0.9.5)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(kysely@0.28.11)(postgres@3.4.8)(react-dom@19.1.4(react@19.1.4))(react@19.1.4)
       '@mc/eslint-config':
         specifier: workspace:*
         version: link:../../tooling/eslint
@@ -211,15 +211,15 @@ importers:
 
   packages/db:
     dependencies:
-      '@vercel/postgres':
-        specifier: ^0.10.0
-        version: 0.10.0
       drizzle-orm:
         specifier: ^0.44.7
-        version: 0.44.7(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(prisma@5.22.0)
+        version: 0.44.7(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(postgres@3.4.8)(prisma@5.22.0)
       drizzle-zod:
         specifier: ^0.8.3
-        version: 0.8.3(drizzle-orm@0.44.7(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(prisma@5.22.0))(zod@4.3.6)
+        version: 0.8.3(drizzle-orm@0.44.7(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(postgres@3.4.8)(prisma@5.22.0))(zod@4.3.6)
+      postgres:
+        specifier: ^3.4.5
+        version: 3.4.8
       zod:
         specifier: 'catalog:'
         version: 4.3.6
@@ -233,6 +233,9 @@ importers:
       '@mc/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.19.15
       drizzle-kit:
         specifier: ^0.31.5
         version: 0.31.9
@@ -5509,6 +5512,10 @@ packages:
   postgres-range@1.1.4:
     resolution: {integrity: sha512-i/hbxIE9803Alj/6ytL7UHQxRvZkI9O4Sy+J3HGc4F4oo/2eQAjTSNJ0bfxyse3bH0nuVesCk+3IRLaMtG3H6w==}
 
+  postgres@3.4.8:
+    resolution: {integrity: sha512-d+JFcLM17njZaOLkv6SCev7uoLaBtfK86vMUXhW1Z4glPWh4jozno9APvW/XKFJ3CCxVoC7OL38BqRydtu5nGg==}
+    engines: {node: '>=12'}
+
   prebuild-install@7.1.3:
     resolution: {integrity: sha512-8Mf2cbV7x1cXPUILADGI3wuhfqWvtiLA1iclTDbFRZkgRQS0NqsPZphna9V+HyTEadheuPmjaJMsbzKQFOzLug==}
     engines: {node: '>=10'}
@@ -7088,7 +7095,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@better-auth/cli@1.4.0-beta.9(@neondatabase/serverless@0.9.5)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(kysely@0.28.11)(react-dom@19.1.4(react@19.1.4))(react@19.1.4)':
+  '@better-auth/cli@1.4.0-beta.9(@neondatabase/serverless@0.9.5)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(kysely@0.28.11)(postgres@3.4.8)(react-dom@19.1.4(react@19.1.4))(react@19.1.4)':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/preset-react': 7.28.5(@babel/core@7.29.0)
@@ -7105,7 +7112,7 @@ snapshots:
       chalk: 5.6.2
       commander: 12.1.0
       dotenv: 17.3.1
-      drizzle-orm: 0.33.0(@neondatabase/serverless@0.9.5)(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(prisma@5.22.0)(react@19.1.4)
+      drizzle-orm: 0.33.0(@neondatabase/serverless@0.9.5)(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(postgres@3.4.8)(prisma@5.22.0)(react@19.1.4)
       get-tsconfig: 4.13.6
       jiti: 2.6.1
       open: 10.2.0
@@ -8109,6 +8116,7 @@ snapshots:
   '@neondatabase/serverless@0.9.5':
     dependencies:
       '@types/pg': 8.11.6
+    optional: true
 
   '@next/env@16.1.6': {}
 
@@ -9427,6 +9435,7 @@ snapshots:
       '@types/node': 25.4.0
       pg-protocol: 1.13.0
       pg-types: 4.1.0
+    optional: true
 
   '@types/picomatch@4.0.2': {}
 
@@ -9555,6 +9564,7 @@ snapshots:
       ws: 8.19.0(bufferutil@4.1.0)
     transitivePeerDependencies:
       - utf-8-validate
+    optional: true
 
   '@xmldom/xmldom@0.8.11': {}
 
@@ -9952,6 +9962,7 @@ snapshots:
   bufferutil@4.1.0:
     dependencies:
       node-gyp-build: 4.8.4
+    optional: true
 
   bundle-name@4.1.0:
     dependencies:
@@ -10271,7 +10282,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.33.0(@neondatabase/serverless@0.9.5)(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(prisma@5.22.0)(react@19.1.4):
+  drizzle-orm@0.33.0(@neondatabase/serverless@0.9.5)(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(postgres@3.4.8)(prisma@5.22.0)(react@19.1.4):
     optionalDependencies:
       '@neondatabase/serverless': 0.9.5
       '@prisma/client': 5.22.0(prisma@5.22.0)
@@ -10280,10 +10291,11 @@ snapshots:
       '@vercel/postgres': 0.10.0
       better-sqlite3: 12.6.2
       kysely: 0.28.11
+      postgres: 3.4.8
       prisma: 5.22.0
       react: 19.1.4
 
-  drizzle-orm@0.44.7(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(prisma@5.22.0):
+  drizzle-orm@0.44.7(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(postgres@3.4.8)(prisma@5.22.0):
     optionalDependencies:
       '@prisma/client': 5.22.0(prisma@5.22.0)
       '@types/better-sqlite3': 7.6.13
@@ -10291,11 +10303,12 @@ snapshots:
       '@vercel/postgres': 0.10.0
       better-sqlite3: 12.6.2
       kysely: 0.28.11
+      postgres: 3.4.8
       prisma: 5.22.0
 
-  drizzle-zod@0.8.3(drizzle-orm@0.44.7(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(prisma@5.22.0))(zod@4.3.6):
+  drizzle-zod@0.8.3(drizzle-orm@0.44.7(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(postgres@3.4.8)(prisma@5.22.0))(zod@4.3.6):
     dependencies:
-      drizzle-orm: 0.44.7(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(prisma@5.22.0)
+      drizzle-orm: 0.44.7(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(better-sqlite3@12.6.2)(kysely@0.28.11)(postgres@3.4.8)(prisma@5.22.0)
       zod: 4.3.6
 
   dunder-proto@1.0.1:
@@ -11987,7 +12000,8 @@ snapshots:
 
   node-forge@1.3.3: {}
 
-  node-gyp-build@4.8.4: {}
+  node-gyp-build@4.8.4:
+    optional: true
 
   node-int64@0.4.0: {}
 
@@ -12075,7 +12089,8 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.1.1
 
-  obuf@1.1.2: {}
+  obuf@1.1.2:
+    optional: true
 
   ohash@2.0.11: {}
 
@@ -12200,11 +12215,14 @@ snapshots:
 
   perfect-debounce@2.1.0: {}
 
-  pg-int8@1.0.1: {}
+  pg-int8@1.0.1:
+    optional: true
 
-  pg-numeric@1.0.2: {}
+  pg-numeric@1.0.2:
+    optional: true
 
-  pg-protocol@1.13.0: {}
+  pg-protocol@1.13.0:
+    optional: true
 
   pg-types@4.1.0:
     dependencies:
@@ -12215,6 +12233,7 @@ snapshots:
       postgres-date: 2.1.0
       postgres-interval: 3.0.0
       postgres-range: 1.1.4
+    optional: true
 
   picocolors@1.1.1: {}
 
@@ -12258,17 +12277,24 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  postgres-array@3.0.4: {}
+  postgres-array@3.0.4:
+    optional: true
 
   postgres-bytea@3.0.0:
     dependencies:
       obuf: 1.1.2
+    optional: true
 
-  postgres-date@2.1.0: {}
+  postgres-date@2.1.0:
+    optional: true
 
-  postgres-interval@3.0.0: {}
+  postgres-interval@3.0.0:
+    optional: true
 
-  postgres-range@1.1.4: {}
+  postgres-range@1.1.4:
+    optional: true
+
+  postgres@3.4.8: {}
 
   prebuild-install@7.1.3:
     dependencies:
