@@ -1,5 +1,6 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
+
 import * as schema from "./schema";
 
 if (!process.env.DATABASE_URL) {
@@ -21,7 +22,6 @@ export const sql =
 
 if (!globalForDb.sql) globalForDb.sql = sql;
 
-export const db =
-  drizzle(sql, { schema });
+export const db = drizzle(sql, { schema });
 
 if (!globalForDb.db) globalForDb.db = db;
