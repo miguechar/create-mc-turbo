@@ -1,21 +1,22 @@
 "use client";
 
 import React from "react";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from "react-hook-form";
-import { Button } from "@mc/ui/components/button";
-import { Input } from "@mc/ui/components/input";
 import { useMutation } from "@tanstack/react-query";
 import { DiamondPlus, Loader2 } from "lucide-react";
+import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
 import { authClient } from "@mc/auth/client";
+import { Button } from "@mc/ui/components/button";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
 } from "@mc/ui/components/field";
+import { Input } from "@mc/ui/components/input";
 import { InputGroup } from "@mc/ui/components/input-group";
 
 export const SignUpFormSchema = z
@@ -68,7 +69,7 @@ const SignUpForm = ({ className }: { className?: string }) => {
         callbackURL: `/login`,
       });
 
-      console.log("There was an error signing up!", error)
+      console.log("There was an error signing up!", error);
 
       if (error) {
         toast.error(error.message, { id: "signup" });

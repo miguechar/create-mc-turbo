@@ -1,9 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { z } from "zod";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { KeyRound, Loader2, ShieldCheck } from "lucide-react";
 import { Controller, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
+
+import { authClient } from "@mc/auth/client";
 import { Button } from "@mc/ui/components/button";
 import {
   Field,
@@ -12,19 +19,14 @@ import {
   FieldLabel,
 } from "@mc/ui/components/field";
 import { Input } from "@mc/ui/components/input";
-import { useMutation } from "@tanstack/react-query";
-import { KeyRound, Loader2, ShieldCheck } from "lucide-react";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { authClient } from "@mc/auth/client";
-import Link from "next/link";
-import { routes } from "~/lib/routes";
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSlot,
   InputOTPSeparator,
+  InputOTPSlot,
 } from "@mc/ui/components/input-otp";
+
+import { routes } from "~/lib/routes";
 
 export const LoginFormSchema = z.object({
   email: z.email("Please enter a valid email address"),
@@ -115,11 +117,11 @@ export function LoginForm({ className }: { className?: string }) {
       >
         <FieldGroup>
           <div className="mb-4 text-center">
-            <ShieldCheck className="mx-auto h-12 w-12 text-primary" />
+            <ShieldCheck className="text-primary mx-auto h-12 w-12" />
             <h2 className="mt-2 text-lg font-semibold">
               Two-Factor Authentication
             </h2>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               Enter the 6-digit code from your authenticator app
             </p>
           </div>

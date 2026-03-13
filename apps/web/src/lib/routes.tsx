@@ -33,8 +33,8 @@ export const routes = {
     },
     resetPassword: {
       url: "/reset-password",
-    }
-  }
+    },
+  },
 };
 
 export const navMain = [routes.home, routes.trialCards];

@@ -1,9 +1,15 @@
 "use client";
 
 import React from "react";
-import { z } from "zod";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { Loader2, RefreshCcw } from "lucide-react";
 import { Controller, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
+
+import { authClient } from "@mc/auth/client";
 import { Button } from "@mc/ui/components/button";
 import {
   Field,
@@ -12,12 +18,8 @@ import {
   FieldLabel,
 } from "@mc/ui/components/field";
 import { Input } from "@mc/ui/components/input";
-import { useMutation } from "@tanstack/react-query";
-import { Loader2, RefreshCcw } from "lucide-react";
-import { toast } from "sonner";
-import { authClient } from "@mc/auth/client";
+
 import { routes } from "~/lib/routes";
-import { useRouter } from "next/navigation";
 
 export const ForgotPasswordReset = z.object({
   email: z.string().email({
