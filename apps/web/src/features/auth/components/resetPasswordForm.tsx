@@ -2,23 +2,25 @@
 
 import React from "react";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
-import { routes } from "@/lib/routes";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { authClient } from "@repo/auth/client";
 import { useMutation } from "@tanstack/react-query";
-import { Button } from "@workspace/ui/components/button";
+import { KeyRound, Loader2 } from "lucide-react";
+import { Controller, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
+
+import { authClient } from "@mc/auth/client";
+import { Button } from "@mc/ui/components/button";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@workspace/ui/components/field";
-import { Input } from "@workspace/ui/components/input";
-import { InputGroup } from "@workspace/ui/components/input-group";
-import { KeyRound, Loader2 } from "lucide-react";
-import { Controller, useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
+} from "@mc/ui/components/field";
+import { Input } from "@mc/ui/components/input";
+import { InputGroup } from "@mc/ui/components/input-group";
+
+import { routes } from "~/lib/routes";
 
 export const ResetPasswordFormSchema = z.object({
   password: z.string().min(8, {
@@ -31,7 +33,7 @@ export function ResetPasswordForm({ className }: { className?: string }) {
   const token = searchParams.get("token");
 
   if (!token) {
-    redirect(routes.auth.login);
+    redirect(routes.auth.login.url);
   }
 
   const router = useRouter();
@@ -65,7 +67,7 @@ export function ResetPasswordForm({ className }: { className?: string }) {
       toast.success("Successfully changed your password, please login", {
         id: "signin",
       });
-      router.push(routes.auth.login);
+      router.push(routes.auth.login.url);
     },
   });
 
