@@ -1,8 +1,8 @@
 "use client"
 
-import { SidebarIcon } from "lucide-react"
+import * as React from "react"
+import { Search, SidebarIcon } from "lucide-react"
 
-import { SearchForm } from "@mc/ui/components/search-form"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,9 +15,11 @@ import { Button } from "@mc/ui/components/button"
 import { Separator } from "@mc/ui/components/separator"
 import { useSidebar } from "@mc/ui/components/sidebar"
 import { ModeToggle } from "@mc/ui/components/theme-toggle"
+import { CommandMenu } from "~/components/CommandDialog"
 
 export function SiteHeader() {
   const { toggleSidebar } = useSidebar()
+  const [commandOpen, setCommandOpen] = React.useState(false)
 
   return (
     <header className="sticky top-0 z-50 flex w-full items-center border-b bg-background">
@@ -42,7 +44,17 @@ export function SiteHeader() {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <SearchForm className="w-full sm:ml-auto sm:w-auto" />
+        <button
+          onClick={() => setCommandOpen(true)}
+          className="relative flex h-8 w-full items-center gap-2 rounded-md border bg-muted/50 px-3 text-sm text-muted-foreground transition-colors hover:bg-muted sm:ml-auto sm:w-48"
+        >
+          <Search className="size-3.5 shrink-0 opacity-50" />
+          <span>Search...</span>
+          <kbd className="ml-auto hidden rounded border bg-background px-1.5 text-xs sm:inline-flex">
+            ⌃J
+          </kbd>
+        </button>
+        <CommandMenu open={commandOpen} onOpenChange={setCommandOpen} />
         <ModeToggle />
       </div>
     </header>
