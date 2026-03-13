@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { DiamondPlus, Loader2 } from "lucide-react";
@@ -18,6 +19,8 @@ import {
 } from "@mc/ui/components/field";
 import { Input } from "@mc/ui/components/input";
 import { InputGroup } from "@mc/ui/components/input-group";
+
+import { routes } from "~/lib/routes";
 
 export const SignUpFormSchema = z
   .object({
@@ -48,6 +51,8 @@ export const SignUpFormSchema = z
   });
 
 const SignUpForm = ({ className }: { className?: string }) => {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof SignUpFormSchema>>({
     resolver: zodResolver(SignUpFormSchema),
     defaultValues: {
@@ -69,8 +74,6 @@ const SignUpForm = ({ className }: { className?: string }) => {
         callbackURL: `/login`,
       });
 
-      console.log("There was an error signing up!", error);
-
       if (error) {
         toast.error(error.message, { id: "signup" });
         throw new Error(error.message);
@@ -81,11 +84,9 @@ const SignUpForm = ({ className }: { className?: string }) => {
     onError: (error) => {
       toast.error(error.message, { id: "signup" });
     },
-    onSuccess: (data) => {
-      toast.success(
-        "Successfully signed up!, please check your inbox and verify your email",
-        { id: "signup" },
-      );
+    onSuccess: () => {
+      toast.success("Successfully signed up!", { id: "signup" });
+      router.push(routes.home.url);
     },
   });
 

@@ -17,6 +17,7 @@ export const env = createEnv({
    */
   server: {
     POSTGRES_URL: z.url(),
+    AUTH_SECRET: z.string().min(1),
   },
 
   /**

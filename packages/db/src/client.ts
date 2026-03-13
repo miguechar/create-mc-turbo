@@ -3,8 +3,8 @@ import postgres from "postgres";
 
 import * as schema from "./schema";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL is not set");
+if (!process.env.POSTGRES_URL) {
+  throw new Error("POSTGRES_URL is not set");
 }
 
 // Ensure the client and db are reused across hot reloads (in dev)
@@ -16,7 +16,7 @@ const globalForDb = global as unknown as {
 
 export const sql =
   globalForDb.sql ??
-  postgres(process.env.DATABASE_URL, {
+  postgres(process.env.POSTGRES_URL, {
     max: 25, // optional, keep it small if using serverless
   });
 
