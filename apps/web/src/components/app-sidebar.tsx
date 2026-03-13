@@ -5,7 +5,6 @@ import { Command } from "lucide-react";
 
 import { NavMain } from "@mc/ui/components/nav-main";
 import { NavSecondary } from "@mc/ui/components/nav-secondary";
-import { NavUser } from "@mc/ui/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -16,6 +15,7 @@ import {
   SidebarMenuItem,
 } from "@mc/ui/components/sidebar";
 
+import { NavUser } from "~/components/nav-user";
 import { navMain, navSecondary, navUser } from "~/lib/routes";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {

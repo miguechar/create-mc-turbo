@@ -1,4 +1,11 @@
-import { Car, HomeIcon, LifeBuoy, Send, ShipIcon } from "lucide-react";
+import {
+  Car,
+  HomeIcon,
+  LifeBuoy,
+  Send,
+  ShipIcon,
+  UserCircle,
+} from "lucide-react";
 
 export const routes = {
   home: {
@@ -33,6 +40,13 @@ export const routes = {
     },
     resetPassword: {
       url: "/reset-password",
+    },
+  },
+  user: {
+    account: {
+      title: "Account",
+      url: "/account",
+      icon: UserCircle,
     },
   },
 };
