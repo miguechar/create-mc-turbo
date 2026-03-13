@@ -3,12 +3,11 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { Toaster } from "@mc/ui/components/sonner";
 import { ThemeProvider } from "@mc/ui/components/theme-provider";
-import { ModeToggle } from "@mc/ui/components/theme-toggle";
 import { cn } from "@mc/ui/lib/utils";
 
 import { env } from "~/env";
 
-import "~/app/styles.css";
+import "@mc/ui/globals.css"
 
 import Providers from "~/components/providers";
 
