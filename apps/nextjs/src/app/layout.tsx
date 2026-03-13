@@ -2,8 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { Toaster } from "@mc/ui/components/sonner";
+import { ThemeProvider } from "@mc/ui/components/theme-provider";
+import { ModeToggle } from "@mc/ui/components/theme-toggle";
 import { cn } from "@mc/ui/lib/utils";
-import { ThemeProvider, ThemeToggle } from "@mc/ui/components/theme-provider";
 
 import { env } from "~/env";
 
@@ -58,11 +59,16 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           geistMono.variable,
         )}
       >
-        <ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Providers>
             {props.children}
             <div className="absolute right-4 bottom-4">
-              <ThemeToggle />
+              <ModeToggle />
             </div>
             <Toaster />
           </Providers>

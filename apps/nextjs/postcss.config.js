@@ -1,1 +1,1 @@
-export { default } from "@mc/tailwind-config/postcss-config";
+export { default } from "@mc/ui/postcss.config";
