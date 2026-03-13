@@ -1,5 +1,5 @@
 {
-  "name": "@mc/nextjs",
+  "name": "@mc/web",
   "private": true,
   "type": "module",
   "scripts": {
