@@ -14,6 +14,7 @@ import {
 import { Button } from "@mc/ui/components/button"
 import { Separator } from "@mc/ui/components/separator"
 import { useSidebar } from "@mc/ui/components/sidebar"
+import { ModeToggle } from "@mc/ui/components/theme-toggle"
 
 export function SiteHeader() {
   const { toggleSidebar } = useSidebar()
@@ -42,6 +43,7 @@ export function SiteHeader() {
           </BreadcrumbList>
         </Breadcrumb>
         <SearchForm className="w-full sm:ml-auto sm:w-auto" />
+        <ModeToggle />
       </div>
     </header>
   )
