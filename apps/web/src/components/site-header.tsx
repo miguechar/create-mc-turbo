@@ -3,20 +3,13 @@
 import * as React from "react";
 import { Search, SidebarIcon } from "lucide-react";
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@mc/ui/components/breadcrumb";
 import { Button } from "@mc/ui/components/button";
 import { Separator } from "@mc/ui/components/separator";
 import { useSidebar } from "@mc/ui/components/sidebar";
 import { ModeToggle } from "@mc/ui/components/theme-toggle";
 
 import { CommandMenu } from "~/components/CommandDialog";
+import Logo from "./logo";
 
 export function SiteHeader() {
   const { toggleSidebar } = useSidebar();
@@ -34,17 +27,7 @@ export function SiteHeader() {
           <SidebarIcon />
         </Button>
         <Separator orientation="vertical" className="mr-2 h-4" />
-        <Breadcrumb className="hidden sm:block">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Build Your Application</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <Logo />
         <button
           onClick={() => setCommandOpen(true)}
           className="bg-muted/50 text-muted-foreground hover:bg-muted relative flex h-8 w-full items-center gap-2 rounded-md border px-3 text-sm transition-colors sm:ml-auto sm:w-48"
