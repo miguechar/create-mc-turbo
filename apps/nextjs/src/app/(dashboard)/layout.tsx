@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AppSidebar } from "@mc/ui/components/app-sidebar";
+import { AppSidebar } from "~/components/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@mc/ui/components/sidebar";
 import { SiteHeader } from "~/components/site-header";
 
@@ -14,7 +14,6 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <SidebarInset>
             <div className="flex flex-1 flex-col gap-4 p-4">
               {children}
-              <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
             </div>
           </SidebarInset>
         </div>
