@@ -1,24 +1,24 @@
 import React from "react";
 import Link from "next/link";
 
-import { LoginForm } from "~/features/auth/components/loginForm";
+import SignUpForm from "~/features/auth/components/signupForm";
 import { routes } from "~/lib/routes";
 
-const LogInPage = () => {
+const SignupPage = () => {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col items-center gap-1 text-center">
-        <h1 className="text-2xl font-bold">Login to your account</h1>
+        <h1 className="text-2xl font-bold">Create a new account</h1>
         <p className="text-muted-foreground text-sm text-balance">
-          Enter your email below to login to your account
+          Enter your email below to create your account
         </p>
       </div>
-      <LoginForm className="mb-3" />
+      <SignUpForm className="mb-3" />
       <div className="flex flex-col gap-3">
         <span className="flex w-full items-center justify-center gap-1 text-sm">
-          {"Don't have an account? "}
-          <Link href={routes.auth.signup.url} className="hover:underline">
-            Sign Up
+          {"Already have an account? "}
+          <Link href={routes.auth.login.url} className="hover:underline">
+            Log in
           </Link>
         </span>
       </div>
@@ -26,4 +26,4 @@ const LogInPage = () => {
   );
 };
 
-export default LogInPage;
+export default SignupPage;

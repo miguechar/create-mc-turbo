@@ -13,6 +13,7 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@mc/auth": "workspace:*",
     "@mc/db": "workspace:*",
     "@mc/ui": "workspace:*",
@@ -20,11 +21,14 @@
     "@t3-oss/env-nextjs": "^0.13.8",
     "@tanstack/react-form": "catalog:",
     "@tanstack/react-query": "catalog:",
+    "@tanstack/react-query-devtools": "catalog:",
     "better-auth": "catalog:",
     "lucide-react": "^0.577.0",
     "next": "^16.0.9",
     "react": "catalog:react19",
     "react-dom": "catalog:react19",
+    "react-hook-form": "^7.71.2",
+    "sonner": "^2.0.7",
     "superjson": "2.2.3",
     "zod": "catalog:"
   },

@@ -21,6 +21,20 @@ export const routes = {
     url: (slug: string) => `/projects/${slug}`,
     icon: Car,
   },
+  auth: {
+    login: {
+      url: "/login",
+    },
+    signup: {
+      url: "/signup",
+    },
+    forgotPassword: {
+      url: "/forgot-password",
+    },
+    resetPassword: {
+      url: "/reset-password",
+    }
+  }
 };
 
 export const navMain = [routes.home, routes.trialCards];
