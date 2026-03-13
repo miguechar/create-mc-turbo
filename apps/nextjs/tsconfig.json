@@ -8,6 +8,10 @@
     },
     "plugins": [{ "name": "next" }]
   },
-  "include": [".", ".next/types/**/*.ts", "../../packages/ui/src/components/theme-toggle.tsx"],
+  "include": [
+    ".",
+    ".next/types/**/*.ts",
+    "../../packages/ui/src/components/theme-toggle.tsx"
+  ],
   "exclude": ["node_modules"]
 }

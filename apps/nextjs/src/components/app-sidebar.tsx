@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Command } from "lucide-react"
+import * as React from "react";
+import { Command } from "lucide-react";
 
-import { NavMain } from "@mc/ui/components/nav-main"
-import { NavSecondary } from "@mc/ui/components/nav-secondary"
-import { NavUser } from "@mc/ui/components/nav-user"
+import { NavMain } from "@mc/ui/components/nav-main";
+import { NavSecondary } from "@mc/ui/components/nav-secondary";
+import { NavUser } from "@mc/ui/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -14,8 +14,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@mc/ui/components/sidebar"
-import { navMain, navSecondary, navUser } from "~/lib/routes"
+} from "@mc/ui/components/sidebar";
+
+import { navMain, navSecondary, navUser } from "~/lib/routes";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -28,7 +29,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <Command className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
@@ -48,5 +49,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavUser user={navUser} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

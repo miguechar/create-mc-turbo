@@ -7,7 +7,7 @@ import { cn } from "@mc/ui/lib/utils";
 
 import { env } from "~/env";
 
-import "@mc/ui/globals.css"
+import "@mc/ui/globals.css";
 
 import Providers from "~/components/providers";
 

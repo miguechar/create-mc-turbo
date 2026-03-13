@@ -1,7 +1,8 @@
 import React from "react";
 
-import { AppSidebar } from "~/components/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@mc/ui/components/sidebar";
+
+import { AppSidebar } from "~/components/app-sidebar";
 import { SiteHeader } from "~/components/site-header";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
@@ -12,9 +13,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="flex flex-1">
           <AppSidebar collapsible="icon" />
           <SidebarInset>
-            <div className="flex flex-1 flex-col gap-4 p-4">
-              {children}
-            </div>
+            <div className="flex flex-1 flex-col gap-4 p-4">{children}</div>
           </SidebarInset>
         </div>
       </SidebarProvider>
