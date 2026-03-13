@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { BadgeCheck, ChevronsUpDown, LogOut } from "lucide-react";
 
+import { authClient } from "@mc/auth/client";
 import { Avatar, AvatarFallback, AvatarImage } from "@mc/ui/components/avatar";
 import {
   DropdownMenu,
@@ -20,6 +21,7 @@ import {
   useSidebar,
 } from "@mc/ui/components/sidebar";
 
+import { getUserInitials } from "~/lib/getUserInitials";
 import { routes } from "~/lib/routes";
 
 export function NavUser({
@@ -33,6 +35,9 @@ export function NavUser({
 }) {
   const { isMobile } = useSidebar();
 
+  const { data: session } = authClient.useSession();
+  console.log("session", session);
+
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -44,11 +49,15 @@ export function NavUser({
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarFallback className="rounded-lg">
+                  {getUserInitials(session?.user.name ?? "")}
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+                <span className="truncate font-medium">
+                  {session?.user.name}
+                </span>
+                <span className="truncate text-xs">{session?.user.email}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -63,11 +72,17 @@ export function NavUser({
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  <AvatarFallback className="rounded-lg">
+                    {getUserInitials(session?.user.name ?? "")}
+                  </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
+                  <span className="truncate font-medium">
+                    {session?.user.name}
+                  </span>
+                  <span className="truncate text-xs">
+                    {session?.user.email}
+                  </span>
                 </div>
               </div>
             </DropdownMenuLabel>
