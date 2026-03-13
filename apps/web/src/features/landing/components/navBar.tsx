@@ -8,7 +8,7 @@ import { routes } from "~/lib/routes";
 
 const NavBar = () => {
   return (
-    <nav className="border-b p-3">
+    <nav className="sticky top-0 z-10 border-b p-3">
       <div className="container mx-auto flex items-center justify-between gap-3">
         <Logo />
         <div className="flex items-center gap-3">
