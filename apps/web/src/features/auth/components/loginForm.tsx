@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { KeyRound, Loader2, ShieldCheck } from "lucide-react";
+import { KeyRound, Loader2, ShieldCheck, UserRound } from "lucide-react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -17,6 +17,7 @@ import {
   FieldError,
   FieldGroup,
   FieldLabel,
+  FieldSeparator,
 } from "@mc/ui/components/field";
 import { Input } from "@mc/ui/components/input";
 import {
@@ -226,6 +227,15 @@ export function LoginForm({ className }: { className?: string }) {
           )}
           Login
         </Button>
+        <FieldSeparator>Or sign in as guest</FieldSeparator>
+        <Field>
+          <Link href={routes.home.url}>
+            <Button variant="outline" type="button" className="w-full">
+              <UserRound />
+              Continue as guest
+            </Button>
+          </Link>
+        </Field>
       </FieldGroup>
     </form>
   );

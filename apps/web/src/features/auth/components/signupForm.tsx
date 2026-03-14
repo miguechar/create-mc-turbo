@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { DiamondPlus, Loader2 } from "lucide-react";
+import { DiamondPlus, Loader2, UserRound } from "lucide-react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -16,6 +17,7 @@ import {
   FieldError,
   FieldGroup,
   FieldLabel,
+  FieldSeparator,
 } from "@mc/ui/components/field";
 import { Input } from "@mc/ui/components/input";
 import { InputGroup } from "@mc/ui/components/input-group";
@@ -186,6 +188,16 @@ const SignUpForm = ({ className }: { className?: string }) => {
           )}
           {"Create Account"}
         </Button>
+
+        <FieldSeparator>Or sign in as guest</FieldSeparator>
+        <Field>
+          <Link href={routes.home.url}>
+            <Button variant="outline" type="button" className="w-full">
+              <UserRound />
+              Continue as guest
+            </Button>
+          </Link>
+        </Field>
       </FieldGroup>
     </form>
   );
