@@ -10,6 +10,6 @@ export default {
   schema: "./src/schema.ts",
   out: "./src/migrations",
   dialect: "postgresql",
-  dbCredentials: { url: nonPoolingUrl },
+  dbCredentials: { url: process.env.POSTGRES_URL },
   casing: "snake_case",
 } satisfies Config;

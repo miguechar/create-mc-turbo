@@ -1,7 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { BadgeCheck, ChevronsUpDown, LogOut, PlusCircle } from "lucide-react";
+import {
+  BadgeCheck,
+  ChevronsUpDown,
+  Lock,
+  LogOut,
+  PlusCircle,
+} from "lucide-react";
 
 import { authClient } from "@mc/auth/client";
 import { Avatar, AvatarFallback, AvatarImage } from "@mc/ui/components/avatar";
@@ -103,6 +109,18 @@ export function NavUser({
                     Create Account
                   </DropdownMenuItem>
                 </Link>
+              )}
+
+              {session?.user.role === "admin" && (
+                <div>
+                  <DropdownMenuSeparator />
+                  <Link href={"/admin"}>
+                    <DropdownMenuItem>
+                      <Lock />
+                      Admin
+                    </DropdownMenuItem>
+                  </Link>
+                </div>
               )}
 
               {session && (
