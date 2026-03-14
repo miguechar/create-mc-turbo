@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BadgeCheck, ChevronsUpDown, LogOut } from "lucide-react";
+import { BadgeCheck, ChevronsUpDown, LogOut, PlusCircle } from "lucide-react";
 
 import { authClient } from "@mc/auth/client";
 import { Avatar, AvatarFallback, AvatarImage } from "@mc/ui/components/avatar";
@@ -36,7 +36,6 @@ export function NavUser({
   const { isMobile } = useSidebar();
 
   const { data: session } = authClient.useSession();
-  console.log("session", session);
 
   return (
     <SidebarMenu>
@@ -50,14 +49,16 @@ export function NavUser({
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
                 <AvatarFallback className="rounded-lg">
-                  {getUserInitials(session?.user.name ?? "")}
+                  {getUserInitials(session?.user.name ?? "Not Found")}
                 </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">
-                  {session?.user.name}
+                  {session?.user.name ?? "Not Logged In"}
                 </span>
-                <span className="truncate text-xs">{session?.user.email}</span>
+                <span className="truncate text-xs">
+                  {session?.user.email ?? "No User Found"}
+                </span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -78,27 +79,41 @@ export function NavUser({
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">
-                    {session?.user.name}
+                    {session?.user.name ?? "Not Logged In"}
                   </span>
                   <span className="truncate text-xs">
-                    {session?.user.email}
+                    {session?.user.email ?? "No User Found"}
                   </span>
                 </div>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <Link href={routes.user.account.url}>
-                <DropdownMenuItem>
-                  <BadgeCheck />
-                  Account
-                </DropdownMenuItem>
-              </Link>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <LogOut />
-                Log out
-              </DropdownMenuItem>
+              {session ? (
+                <Link href={routes.user.account.url}>
+                  <DropdownMenuItem>
+                    <BadgeCheck />
+                    Account
+                  </DropdownMenuItem>
+                </Link>
+              ) : (
+                <Link href={routes.auth.signup.url}>
+                  <DropdownMenuItem>
+                    <PlusCircle />
+                    Create Account
+                  </DropdownMenuItem>
+                </Link>
+              )}
+
+              {session && (
+                <>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <LogOut />
+                    Log out
+                  </DropdownMenuItem>
+                </>
+              )}
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
