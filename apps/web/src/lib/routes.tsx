@@ -12,11 +12,13 @@ export const routes = {
     url: "/dashboard",
     title: "Dashboard",
     icon: HomeIcon,
+    showInShortcut: true,
   },
   trialCards: {
     url: "/trial-cards",
     title: "Trial Cards",
     icon: ShipIcon,
+    showInShortcut: true,
     items: [
       { url: "/trial-cards/0489", title: "0489" },
       { url: "/trial-cards/0491", title: "0491" },
@@ -27,19 +29,32 @@ export const routes = {
     title: "Projects",
     url: (slug: string) => `/projects/${slug}`,
     icon: Car,
+    showInShortcut: false,
   },
   auth: {
     login: {
+      title: "Login",
       url: "/login",
+      icon: Car,
+      showInShortcut: false,
     },
     signup: {
+      title: "Sign Up",
       url: "/signup",
+      icon: Car,
+      showInShortcut: false,
     },
     forgotPassword: {
+      title: "Forgot Password",
       url: "/forgot-password",
+      icon: Car,
+      showInShortcut: false,
     },
     resetPassword: {
+      title: "Reset Password",
       url: "/reset-password",
+      icon: Car,
+      showInShortcut: false,
     },
   },
   user: {
@@ -47,6 +62,7 @@ export const routes = {
       title: "Account",
       url: "/account",
       icon: UserCircle,
+      showInShortcut: true,
     },
   },
 };

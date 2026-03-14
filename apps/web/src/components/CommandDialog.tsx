@@ -2,17 +2,6 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import {
-  BellIcon,
-  CalculatorIcon,
-  CalendarIcon,
-  CodeIcon,
-  CreditCardIcon,
-  HelpCircleIcon,
-  ImageIcon,
-  SettingsIcon,
-  UserIcon,
-} from "lucide-react";
 
 import {
   CommandDialog,
@@ -21,8 +10,6 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-  CommandShortcut,
 } from "@mc/ui/components/command";
 
 import { routes } from "~/lib/routes";
@@ -33,20 +20,62 @@ type NavItem = {
   icon: React.ElementType;
 };
 
-function buildNavItems(): NavItem[] {
-  const items: NavItem[] = [];
-  for (const route of Object.values(routes)) {
-    if (typeof route.url === "function") continue;
-    items.push({ title: route.title, url: route.url, icon: route.icon });
-    if ("items" in route && route.items) {
-      for (const sub of route.items) {
-        items.push({
-          title: `${route.title} / ${sub.title}`,
+type RouteLeaf = {
+  title?: string;
+  url?: string | ((...args: unknown[]) => string);
+  icon?: React.ElementType;
+  showInShortcut?: boolean;
+  items?: { url: string; title: string }[];
+};
+
+function isValidNavRoute(route: unknown): route is RouteLeaf & {
+  title: string;
+  url: string;
+  icon: React.ElementType;
+} {
+  if (!route || typeof route !== "object") return false;
+  const r = route as RouteLeaf;
+  return (
+    typeof r.title === "string" &&
+    typeof r.url === "string" &&
+    r.icon != null &&
+    r.showInShortcut !== false
+  );
+}
+
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    Object.getPrototypeOf(value) === Object.prototype
+  );
+}
+
+function collectNavItems(value: unknown, out: NavItem[]): void {
+  if (!isPlainObject(value)) return;
+  if (isValidNavRoute(value)) {
+    out.push({ title: value.title, url: value.url, icon: value.icon });
+    if (value.items) {
+      for (const sub of value.items) {
+        out.push({
+          title: `${value.title} / ${sub.title}`,
           url: sub.url,
-          icon: route.icon,
+          icon: value.icon,
         });
       }
     }
+    return;
+  }
+  // Namespace object (e.g. routes.user, routes.auth) — walk its children
+  for (const sub of Object.values(value)) {
+    collectNavItems(sub, out);
+  }
+}
+
+function buildNavItems(): NavItem[] {
+  const items: NavItem[] = [];
+  for (const route of Object.values(routes)) {
+    collectNavItems(route, items);
   }
   return items;
 }
@@ -99,51 +128,6 @@ export function CommandMenu({
               <span>{item.title}</span>
             </CommandItem>
           ))}
-        </CommandGroup>
-        <CommandSeparator />
-        <CommandGroup heading="Account">
-          <CommandItem>
-            <UserIcon />
-            <span>Profile</span>
-            <CommandShortcut>⌘P</CommandShortcut>
-          </CommandItem>
-          <CommandItem>
-            <CreditCardIcon />
-            <span>Billing</span>
-            <CommandShortcut>⌘B</CommandShortcut>
-          </CommandItem>
-          <CommandItem>
-            <SettingsIcon />
-            <span>Settings</span>
-            <CommandShortcut>⌘S</CommandShortcut>
-          </CommandItem>
-          <CommandItem>
-            <BellIcon />
-            <span>Notifications</span>
-          </CommandItem>
-          <CommandItem>
-            <HelpCircleIcon />
-            <span>Help & Support</span>
-          </CommandItem>
-        </CommandGroup>
-        <CommandSeparator />
-        <CommandGroup heading="Tools">
-          <CommandItem>
-            <CalculatorIcon />
-            <span>Calculator</span>
-          </CommandItem>
-          <CommandItem>
-            <CalendarIcon />
-            <span>Calendar</span>
-          </CommandItem>
-          <CommandItem>
-            <ImageIcon />
-            <span>Image Editor</span>
-          </CommandItem>
-          <CommandItem>
-            <CodeIcon />
-            <span>Code Editor</span>
-          </CommandItem>
         </CommandGroup>
       </CommandList>
     </CommandDialog>
