@@ -4,7 +4,6 @@ import * as React from "react";
 import { Command } from "lucide-react";
 
 import { NavMain } from "@mc/ui/components/nav-main";
-import { NavSecondary } from "@mc/ui/components/nav-secondary";
 import {
   Sidebar,
   SidebarContent,
@@ -43,7 +42,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={navMain} />
-        <NavSecondary items={navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={navUser} />
